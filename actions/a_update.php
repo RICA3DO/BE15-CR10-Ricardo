@@ -6,33 +6,33 @@ require_once 'file_upload.php';
 
 if ($_POST) {
     $id = $_POST['id'];
-    $picture = file_upload($_FILES['picture']);
+    $photo = file_upload($_FILES['photo']);
     $name = $_POST['title'];
     $isbn = $_POST['isbn'];
-    $desc = $_POST['desc'];
-    $btype = $_POST['btype'];
-    $authlast = $_POST['authlast'];
-    $authfirst = $_POST['authfirst'];
-    $pubname = $_POST['pubname'];
-    $pubadd = $_POST['pubadd'];
-    $pubdate = $_POST['pubdate'];
-    $bstatus = $_POST['bstatus'];
+    $description = $_POST['short_description'];
+    $type = $_POST['type'];
+    $firstname = $_POST['author_first_name'];
+    $lastname = $_POST['author_last_name'];
+    $publishername = $_POST['publisher_name'];
+    $publisheraddress = $_POST['publisher_address'];
+    $publisherdate = $_POST['publish_date'];
+    $availability = $_POST['availability'];
     $uploadError = '';
 
-    if ($picture->error === 0) {
-        ($_POST["picture"] == "product.png") ?: unlink("../pictures/$_POST[picture]");
-        $sql = "UPDATE Meda SET picture = '$picture->fileName', title = '$name', ISBN = $isbn, short_description = '$desc', book_type = '$btype', author_last_name = '$authlast', author_first_name = '$authfirst', publisher_name = '$pubname', publisher_address = '$pubadd', publish_date = '$pubdate', book_status = '$bstatus' WHERE bookID = {$id}";
+    if ($photo->error === 0) {
+        ($_POST["photo"] == "product.png") ?: unlink("../pictures/$_POST[photo]");
+        $sql = "UPDATE library SET photo = '$photo->fileName', title = '$name', ISBN = $isbn, short_description = '$description', type = '$type', author_last_name = '$lastname', author_first_name = '$firstname', publisher_name = '$publishername', publisher_address = '$publisheraddress', publish_date = '$publisherdate', availability = '$availability' WHERE libraryID = {$id}";
     } else {
-        $sql = "UPDATE Media SET title = '$name', ISBN = $isbn, short_description = '$desc', book_type = '$btype', author_last_name = '$authlast', author_first_name = '$authfirst', publisher_name = '$pubname', publisher_address = '$pubadd', publish_date = '$pubdate', book_status = '$bstatus' WHERE bookID = {$id}";
+        $sql = "UPDATE library SET title = '$name', ISBN = $isbn, short_description = '$description', type = '$type', author_last_name = '$lastname', author_first_name = '$firstname', publisher_name = '$publishername', publisher_address = '$publisheraddress', publish_date = '$publisherdate', availability = '$availability' WHERE libraryID = {$id}";
     }
     if (mysqli_query($connect, $sql) === TRUE) {
         $class = "success";
-        $message = "Meda data has been successfully updated.";
-        $uploadError = ($picture->error != 0) ? $picture->ErrorMessage : '';
+        $message = "data has been successfully updated.";
+        $uploadError = ($photo->error != 0) ? $photo->ErrorMessage : '';
     } else {
         $class = "danger";
         $message = "Error while updating record: <br>" . mysqli_connect_error();
-        $uploadError = ($picture->error != 0) ? $picture->ErrorMessage : '';
+        $uploadError = ($photo->error != 0) ? $photo->ErrorMessage : '';
     }
     mysqli_close($connect);
     header("refresh: 5; url = ../index.php");
@@ -53,12 +53,12 @@ if ($_POST) {
 <body>
     <div class="container">
         <div class="mt-3 mb-3">
-            <h1 class="mt-5 mb-5">Update Media info</h1>
+            <h1 class="mt-5 mb-5">UPDATE INFO</h1>
         </div>
         <div class="alert alert-<?= $class; ?>" role="alert">
             <p><?= ($message) ?? ''; ?></p>
             <p><?= ($uploadError) ?? ''; ?></p>
-            <a href='../index.php'><button class="btn btn-success" type='button'>Home</button></a>
+            <a href='../index.php'><button class="btn btn-success" type='button'>HOME</button></a>
         </div>
     </div>
 </body>

@@ -2,28 +2,28 @@
 require_once 'actions/db_connect.php';
 
 if ($_GET['publisher_name']) {
-    $publisher = $_GET['publisher_name'];
-    $sql = "SELECT * FROM Media WHERE publisher_name = '$publisher'";
+    $publishername = $_GET['publisher_name'];
+    $sql = "SELECT * FROM library WHERE publisher_name = '$publishername'";
     $result = mysqli_query($connect, $sql);
     $tbody = '';
     if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $tbody .= "<tr>
-                <td><img class='img-thumbnail' src='pictures/" . $row['picture'] . "'</td>
                 <td>" . $row['title'] . "</td>
-                <td>" . $row['ISBN'] . "</td>
+                <td><img class='img-thumbnail' src='pictures/" . $row['photo'] . "'</td>
+                <td>" . $row['type'] . "</td>
                 <td>" . $row['short_description'] . "</td>
-                <td>" . $row['book_type'] . "</td>
-                <td>" . $row['author_last_name'] . "</td>
                 <td>" . $row['author_first_name'] . "</td>
+                <td>" . $row['author_last_name'] . "</td>
                 <td>" . $row['publisher_name'] . "</td>
+                <td>" . $row['ISBN'] . "</td>
                 <td>" . $row['publisher_address'] . "</td>
                 <td>" . $row['publish_date'] . "</td>
-                <td>" . $row['book_status'] . "</td>
+                <td>" . $row['availability'] . "</td>
                 </tr>";
         }
     } else {
-        $tbody = "<tr><td colspan='5'><center>No Data Available</center></td></tr>";
+        $tbody = "<tr><td colspan='5'><center>NO AVAILABLE DATA</center></td></tr>";
     }
 }
 mysqli_close($connect);
@@ -39,7 +39,7 @@ mysqli_close($connect);
     <title>Author page</title>
     <?php require_once 'components/boot.php' ?>
     <style type="text/css">
-        .manageProduct {
+        .Books {
             margin: auto;
         }
 
@@ -60,29 +60,29 @@ mysqli_close($connect);
 </head>
 
 <body>
-    <div class="manageProduct w-75 mt-3">
-        <table class='table table-striped mt-5'>
+    <div class="Books w-50 mt-5 bg-dark">
+        <table class='table text-light mt-5'>
             <thead class='table-secondary'>
                 <tr>
-                    <th class='h5'>Picture</th>
-                    <th class='h5'>Title</th>
+                    <th class='h5'>BOOK TITLE</th>
+                    <th class='h5'>PHOTO</th>
+                    <th class='h5'>TYPE</th>
+                    <th class='h5'>DESCRIPTION</th>
+                    <th class='h5'>WRITER FIRST NAME</th>
+                    <th class='h5'>WRITER LAST NAME</th>
+                    <th class='h5'>PUBLISHER</th>
                     <th class='h5'>ISBN</th>
-                    <th class='h5'>Short description</th>
-                    <th class='h5'>Media Type</th>
-                    <th class='h5'>Author Last Name</th>
-                    <th class='h5'>Author First Name</th>
-                    <th class='h5'>Publisher</th>
-                    <th class='h5'>Publisher address</th>
-                    <th class='h5'>Publish date</th>
-                    <th class='h5'>Status</th>
+                    <th class='h5'>ADDRESS</th>
+                    <th class='h5'>RELEASE DATE</th>
+                    <th class='h5'>AVAILABILITY</th>
                 </tr>
             </thead>
             <tbody>
                 <?= $tbody; ?>
             </tbody>
         </table>
-        <div class='mb-3 d-flex justify-content-end'>
-            <a href="index.php"><button class='btn btn-md btn-primary' type="button">Back</button></a>
+        <div class='mb-5 d-flex justify-content-center'>
+            <a href="index.php"><button class='btn btn-md btn-warning' type="button">GO BACK</button></a>
         </div>
     </div>
 </body>

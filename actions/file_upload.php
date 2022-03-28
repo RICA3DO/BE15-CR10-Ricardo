@@ -1,14 +1,14 @@
 <?php
-function file_upload($picture)
+function file_upload($photo)
 {
     $result = new stdClass();
     $result->fileName = 'product.png';
     $result->error = 1;
-    $fileName = $picture["name"];
-    $fileType = $picture["type"];
-    $fileTmpName = $picture["tmp_name"];
-    $fileError = $picture["error"];
-    $fileSize = $picture["size"];
+    $fileName = $photo["name"];
+    $fileType = $photo["type"];
+    $fileTmpName = $photo["tmp_name"];
+    $fileError = $photo["error"];
+    $fileSize = $photo["size"];
     $fileExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
     $filesAllowed = ["png", "jpg", "jpeg"];
     if ($fileError == 4) {

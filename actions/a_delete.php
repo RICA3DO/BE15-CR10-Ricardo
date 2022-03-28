@@ -3,10 +3,10 @@ require_once 'db_connect.php';
 
 if ($_POST) {
     $id = $_POST['id'];
-    $picture = $_POST['picture'];
-    ($picture == "product.png") ?: unlink("../pictures/$picture");
+    $photo = $_POST['photo'];
+    ($photo == "product.png") ?: unlink("../pictures/$photo");
 
-    $sql = "DELETE FROM Media WHERE bookID = {$id}";
+    $sql = "DELETE FROM library WHERE libraryID = {$id}";
     if (mysqli_query($connect, $sql) === true) {
         $class = "success";
         $message = "The book has been successfully deleted! <br/> You will be redirected to the startpage in 5 seconds.";
@@ -33,7 +33,7 @@ if ($_POST) {
 <body>
     <div class="container">
         <div class="mt-3 mb-3">
-            <h1 class="mt-5 mb-5">Delete book info</h1>
+            <h1 class="mt-5 mb-5">DELETE INFO</h1>
         </div>
         <div class="alert alert-<?= $class; ?>" role="alert">
             <p><?= $message; ?></p>

@@ -4,21 +4,21 @@ require_once 'db_connect.php';
 require_once 'file_upload.php';
 
 if ($_POST) {
-    $picture = file_upload($_FILES['picture']);
+    $photo = file_upload($_FILES['photo']);
     $name = $_POST['title'];
     $isbn = $_POST['isbn'];
-    $desc = $_POST['desc'];
-    $btype = $_POST['btype'];
-    $authlast = $_POST['authlast'];
-    $authfirst = $_POST['authfirst'];
-    $pubname = $_POST['pubname'];
-    $pubadd = $_POST['pubadd'];
-    $pubdate = $_POST['pubdate'];
-    $bstatus = $_POST['bstatus'];
+    $description = $_POST['short_description'];
+    $type = $_POST['type'];
+    $firstname = $_POST['author_first_name'];
+    $lastname = $_POST['author_last_name'];
+    $publishername = $_POST['publisher_name'];
+    $publisheraddress = $_POST['publisher_address'];
+    $publisherdate = $_POST['publisher_date'];
+    $availability = $_POST['availability'];
 
     $uploadError = '';
 
-    $sql = "INSERT INTO Media (picture, title, ISBN, short_description, book_type, author_last_name, author_first_name, publisher_name, publisher_address, publish_date, book_status) VALUES ('$picture->fileName', '$name', '$isbn', '$desc', '$btype', '$authlast', '$authfirst', '$pubname', '$pubadd', '$pubdate', '$bstatus')";
+    $sql = "INSERT INTO library (photo, title, ISBN, short_description, 'type', author_last_name, author_first_name, publisher_name, publisher_address, publish_date, 'availability') VALUES ('$photo->fileName', '$name', '$isbn', '$description', '$type', '$lastname', '$firstname', '$publishername', '$publisheraddress', '$publisherdate', '$availability')";
 
     if (mysqli_query($connect, $sql) === true) {
         $class = "success";
@@ -26,39 +26,39 @@ if ($_POST) {
             <table class='table table-bordered'>
             <thead>
             <tr>
-            <th class='h5'>Title</th>
-            <th class='h5'>ISBN</th>
-            <th class='h5'>Short description</th>
-            <th class='h5'>Book Type</th>
-            <th class='h5'>Author Surname</th>
-            <th class='h5'>Author Name</th>
-            <th class='h5'>Publisher</th>
-            <th class='h5'>Publisher address</th>
-            <th class='h5'>Publish date</th>
-            <th class='h5'>Book Status</th>
+            <th class='h5'>BOOK TITLE</th>
+            <th class='h5'>ISBN CODE</th>
+            <th class='h5'>DESCRIPTION</th>
+            <th class='h5'>TYPE</th>
+            <th class='h5'>WRITER LAST NAME</th>
+            <th class='h5'>WRITER FIRST NAME</th>
+            <th class='h5'>PUBLISHERr</th>
+            <th class='h5'>PUBLISHER ADDRESS</th>
+            <th class='h5'>PUBLISHER DATE</th>
+            <th class='h5'>AVAILABILITY</th>
             </tr>
             </thead>
             <hr>
             <tr>
             <td> $name </td>
             <td> $isbn </td>
-            <td> $desc </td>
-            <td> $btype </td>
-            <td> $authlast </td>
-            <td> $authfirst </td>
-            <td> $pubname </td>
-            <td> $pubadd </td>
-            <td> $pubdate </td>
-            <td> $bstatus </td>
+            <td> $description </td>
+            <td> $type </td>
+            <td> $firstname </td>
+            <td> $lastname </td>
+            <td> $publishername </td>
+            <td> $publisheraddress </td>
+            <td> $publisherdate </td>
+            <td> $availability </td>
             </tr>
             </table>
             <hr>
             <br/> You will be automatically redirected to the startpage in 5 seconds.";
-        $uploadError = ($picture->error != 0) ? $picture->ErrorMessage : '';
+        $uploadError = ($photo->error != 0) ? $photo->ErrorMessage : '';
     } else {
         $class = "danger";
         $message = "Error while creating record. Try again: <br>" . $connect->error;
-        $uploadError = ($picture->error != 0) ? $picture->ErrorMessage : '';
+        $uploadError = ($photo->error != 0) ? $photo->ErrorMessage : '';
     }
     mysqli_close($connect);
     header("refresh: 5; url = ../index.php");
@@ -79,7 +79,7 @@ if ($_POST) {
 <body>
     <div class="container">
         <div class="mt-3 mb-3">
-            <h1 class="mt-5 mb-5">Create book info</h1>
+            <h1 class="mt-5 mb-5">CREATE INFO</h1>
         </div>
         <div class="alert alert-<?= $class; ?>" role="alert">
             <p><?php echo ($message) ?? ''; ?></p>

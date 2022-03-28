@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2022 at 02:49 PM
+-- Generation Time: Mar 28, 2022 at 02:33 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -26,29 +26,29 @@ USE `be15_cr10_ricardo_biglibrary`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `media`
+-- Table structure for table `library`
 --
 
-CREATE TABLE `media` (
-  `bookID` int(11) NOT NULL,
-  `picture` varchar(250) DEFAULT NULL,
-  `title` varchar(50) NOT NULL,
-  `ISBN` int(13) NOT NULL,
+CREATE TABLE `library` (
+  `libraryID` int(11) NOT NULL,
+  `photo` varchar(250) DEFAULT NULL,
+  `title` varchar(60) NOT NULL,
+  `ISBN` int(20) NOT NULL,
   `short_description` varchar(650) NOT NULL,
-  `book_type` varchar(13) NOT NULL,
-  `author_first_name` varchar(50) NOT NULL,
-  `author_last_name` varchar(50) NOT NULL,
-  `publisher_name` varchar(50) NOT NULL,
-  `publisher_address` varchar(50) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `author_first_name` varchar(60) NOT NULL,
+  `author_last_name` varchar(60) NOT NULL,
+  `publisher_name` varchar(60) NOT NULL,
+  `publisher_address` varchar(60) NOT NULL,
   `publish_date` date NOT NULL,
-  `book_status` enum('available','reserved') NOT NULL
+  `availability` enum('available','reserved') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `media`
+-- Dumping data for table `library`
 --
 
-INSERT INTO `media` (`bookID`, `picture`, `title`, `ISBN`, `short_description`, `book_type`, `author_first_name`, `author_last_name`, `publisher_name`, `publisher_address`, `publish_date`, `book_status`) VALUES
+INSERT INTO `library` (`libraryID`, `photo`, `title`, `ISBN`, `short_description`, `type`, `author_first_name`, `author_last_name`, `publisher_name`, `publisher_address`, `publish_date`, `availability`) VALUES
 (1, 'HP_PS.jpeg', 'Harry Potter and the Philosopher\'s Stone', 747532699, 'Harry Potter lives with his abusive aunt and uncle, Vernon and Petunia Dursley and their bullying son, Dudley. On Harry\'s eleventh birthday, a half-giant named Rubeus Hagrid personally delivers an acceptance letter to Hogwarts School of Witchcraft and Wizardry, revealing that Harry\'s parents, James and Lily Potter, were wizards. When Harry was one year old, an evil and powerful dark wizard, Lord Voldemort, murdered his parents. Harry survived Voldemort\'s killing curse that rebounded off his forehead and seemingly destroyed the Dark Lord, leaving a lightning bolt-shaped scar on his forehead.', 'Book', 'Joanne', 'Rowling', 'Bloomsbury', 'UK', '1997-06-26', 'available'),
 (2, 'HP_CS.jpg', 'Harry Potter and the Chamber of Secrets', 747538492, 'While spending the summer at the Dursleys, twelve-year-old Harry is visited by a house-elf named Dobby. He warns that Harry is in danger and must not return to Hogwarts. Harry refuses, so Dobby magically ruins Aunt Petunia and Uncle Vernon\'s dinner party. A furious Uncle Vernon locks Harry into his room in retaliation. The Ministry of Magic immediately sends a notice accusing Harry of performing underage magic and threatening dismissal from Hogwarts.', 'Book', 'Joanne', 'Rowling', 'Bloomsbury', 'UK', '1998-07-02', 'reserved'),
 (3, 'HP_PA.jpg', 'Harry Potter and the Prisoner of Azkaban', 747542155, 'Thirteen-year-old Harry Potter spends another unhappy summer at the Dursleys. After Aunt Marge insults Harry and his deceased parents, an angry Harry accidentally inflates her. Fearing expulsion from Hogwarts, he runs away. On a dark street, a large black dog watches Harry. Startled, Harry stumbles backward, causing his wand to emit sparks. The Knight Bus, a vehicle that rescues stranded wizards, suddenly arrives. Harry goes to the Leaky Cauldron in Diagon Alley where Cornelius Fudge, the Minister for Magic, is waiting. Harry is not expelled but is asked to remain in Diagon Alley until school starts. While there.', 'Book', 'Joanne', 'Rowling', 'Bloomsbury', 'UK', '1999-07-08', 'available'),
@@ -65,20 +65,20 @@ INSERT INTO `media` (`bookID`, `picture`, `title`, `ISBN`, `short_description`, 
 --
 
 --
--- Indexes for table `media`
+-- Indexes for table `library`
 --
-ALTER TABLE `media`
-  ADD PRIMARY KEY (`bookID`);
+ALTER TABLE `library`
+  ADD PRIMARY KEY (`libraryID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `media`
+-- AUTO_INCREMENT for table `library`
 --
-ALTER TABLE `media`
-  MODIFY `bookID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+ALTER TABLE `library`
+  MODIFY `libraryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

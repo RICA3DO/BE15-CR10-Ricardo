@@ -1,34 +1,34 @@
 <?php
 require_once 'actions/db_connect.php';
 
-if ($_GET['bookID']) {
-    $id = $_GET['bookID'];
-    $sql = "SELECT * FROM Media WHERE bookID = {$id}";
+if ($_GET['libraryID']) {
+    $id = $_GET['libraryID'];
+    $sql = "SELECT * FROM library WHERE libraryID = {$id}";
     $result = mysqli_query($connect, $sql);
     $data = mysqli_fetch_assoc($result);
     if (mysqli_num_rows($result) == 1) {
         $name = $data['title'];
         $isbn = $data['ISBN'];
-        $desc = $data['short_description'];
-        $btype = $data['book_type'];
-        $authlast = $data['author_last_name'];
-        $authfirst = $data['author_first_name'];
-        $pubname = $data['publisher_name'];
-        $pubadd = $data['publisher_address'];
-        $pubdate = $data['publish_date'];
-        $bstatus = $data['book_status'];
-        $picture = $data['picture'];
+        $description = $data['short_description'];
+        $type = $data['type'];
+        $firstname = $data['author_first_name'];
+        $lastname = $data['author_last_name'];
+        $publishername = $data['publisher_name'];
+        $publisheraddress = $data['publisher_address'];
+        $publisherdate = $data['publish_date'];
+        $availability = $data['availability'];
+        $photo = $data['photo'];
         $tcontent = "<tr>
             <td>" . $name . "</td>
             <td>" . $isbn . "</td>
-            <td>" . $desc . "</td>
-            <td>" . $btype . "</td>
-            <td>" . $authlast . "</td>
-            <td>" . $authfirst . "</td>
-            <td>" . $pubname . "</td>
-            <td>" . $pubadd . "</td>
-            <td>" . $pubdate . "</td>
-            <td>" . $bstatus . "</td>
+            <td>" . $description . "</td>
+            <td>" . $type . "</td>
+            <td>" . $firstname . "</td>
+            <td>" . $lastname . "</td>
+            <td>" . $publishername . "</td>
+            <td>" . $publisheraddress . "</td>
+            <td>" . $publisherdate . "</td>
+            <td>" . $availability . "</td>
             </tr>";
     } else {
         header("location: error.php");
@@ -45,16 +45,16 @@ if ($_GET['bookID']) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book details</title>
+    <title>DETAILS</title>
     <?php require_once 'components/boot.php' ?>
     <style type="text/css">
-        .manageProduct {
+        .Books {
             margin: auto;
         }
 
         .img-thumbnail {
-            width: 70px !important;
-            height: 70px !important;
+            width: 80px !important;
+            height: 80px !important;
         }
 
         td {
@@ -69,30 +69,30 @@ if ($_GET['bookID']) {
 </head>
 
 <body>
-    <div class="manageProduct w-75 mt-3">
-        <p class='h2 text-center mt-5 mb-5'> <?= $name ?> </p>
-        <img src="pictures/<?= $picture ?>" class="rounded mx-auto d-block mb-3 " alt="<?= $name ?>" width="200px">
-        <table class='table table-striped'>
+    <div class="Books w-50 mt-5 bg-dark">
+        <img src="pictures/<?= $photo ?>" class="rounded mx-auto d-block mb-3 " alt="<?= $name ?>" width="200px">
+        <p class='h2 text-center text-info mt-5 mb-5'> <?= $name ?> </p>
+        <table class='table bg-dark text-white'>
             <thead class='table-secondary'>
                 <tr>
-                    <th class='h5'>Title</th>
+                    <th class='h5'>BOOK TITLE</th>
                     <th class='h5'>ISBN</th>
-                    <th class='h5'>Short description</th>
-                    <th class='h5'>Book Type</th>
-                    <th class='h5'>Author Surname</th>
-                    <th class='h5'>Author Name</th>
-                    <th class='h5'>Publisher</th>
-                    <th class='h5'>Publisher address</th>
-                    <th class='h5'>Publish date</th>
-                    <th class='h5'>Book Status</th>
+                    <th class='h5'>DESCRIPTION</th>
+                    <th class='h5'>TYPE</th>
+                    <th class='h5'>WRITER FIRST NAME</th>
+                    <th class='h5'>WRITER LAST NAME</th>
+                    <th class='h5'>PUBLISHER</th>
+                    <th class='h5'>PUBLISHER ADDRESS</th>
+                    <th class='h5'>RELEASE DATE</th>
+                    <th class='h5'>AVAILABILITY</th>
                 </tr>
             </thead>
             <tbody>
                 <?= $tcontent; ?>
             </tbody>
         </table>
-        <div class='mb-3 d-flex justify-content-end'>
-            <a href="index.php"><button class='btn btn-md btn-primary' type="button">Back</button></a>
+        <div class='mb-3 d-flex justify-content-center'>
+            <a href="index.php"><button class='btn btn-lg btn-warning' type="button">Back</button></a>
         </div>
     </div>
 </body>
