@@ -20,7 +20,7 @@ if ($_GET['libraryID']) {
         $lastname = $data['author_last_name'];
         $publishername = $data['publisher_name'];
         $publisheraddress = $data['publisher_address'];
-        $publisherdate = $data['publisher_date'];
+        $publisherdate = $data['publish_date'];
         $availability = $data['availability'];
         $photo = $data['photo'];
     } else {
@@ -61,6 +61,7 @@ if ($_GET['libraryID']) {
         <table class='table table-striped'>
             <thead class='table-secondary'>
                 <tr>
+                    <th class='h5'>PHOTO</th>
                     <th class='h5'>BOOK TITLE</th>
                     <th class='h5'>ISBN</th>
                     <th class='h5'>DESCRIPTION</th>
@@ -74,6 +75,7 @@ if ($_GET['libraryID']) {
                 </tr>
             </thead>
             <tr>
+                <td><?= $photo ?></td>
                 <td><?= $name ?></td>
                 <td><?= $isbn ?></td>
                 <td><?= $description ?></td>
@@ -89,7 +91,7 @@ if ($_GET['libraryID']) {
 
         <h3 class="mb-4 mt-5">YOU SURE?</h3>
         <form action="actions/a_delete.php" method="post">
-            <input type="hidden" name="id" value="<?= $id ?>" />
+            <input type="hidden" name="libraryID" value="<?= $id ?>" />
             <input type="hidden" name="photo" value="<?= $photo ?>" />
             <button class="btn btn-success mb-5" type="submit">Yes</button>
             <a href="index.php"><button class="btn btn-warning mb-5" type="button">No</button></a>

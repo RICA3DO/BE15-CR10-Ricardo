@@ -10,7 +10,7 @@ if ($_GET['publisher_name']) {
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $tbody .= "<tr>
                 <td>" . $row['title'] . "</td>
-                <td><img class='img-thumbnail' src='pictures/" . $row['photo'] . "'</td>
+                <td><img class='img-thumbnail' src='" . $row['photo'] . "'</td>
                 <td>" . $row['type'] . "</td>
                 <td>" . $row['short_description'] . "</td>
                 <td>" . $row['author_first_name'] . "</td>

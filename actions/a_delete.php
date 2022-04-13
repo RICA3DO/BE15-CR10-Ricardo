@@ -2,10 +2,7 @@
 require_once 'db_connect.php';
 
 if ($_POST) {
-    $id = $_POST['id'];
-    $photo = $_POST['photo'];
-    ($photo == "product.png") ?: unlink("../pictures/$photo");
-
+    $id = $_POST['libraryID'];
     $sql = "DELETE FROM library WHERE libraryID = {$id}";
     if (mysqli_query($connect, $sql) === true) {
         $class = "success";

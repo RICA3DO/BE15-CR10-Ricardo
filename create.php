@@ -18,60 +18,60 @@
   <div class='bg-dark'> 
     <fieldset>
         <legend class='h1 mt-5 mb-10 text-center text-white'>ADD MORE MEDIA</legend>
-        <form action="actions/a_create.php" method="post" enctype="multipart/form-data">
+        <form action="actions/a_create.php" method="post">
             <table class='table text-white'>
                 <tr>
                     <th>TYPE IN TITLE</th>
-                    <td><input class="form-control" type="text" placeholder="Title" /></td>
+                    <td><input class="form-control" type="text" name="title" placeholder="Title" /></td>
                 </tr>
                 <br>
                 <tr>
                     <th>GIVE ISBN CODE</th>
-                    <td><input class="form-control" type="number" placeholder="ISBN" /></td>
+                    <td><input class="form-control" type="number" name="ISBN" placeholder="ISBN" /></td>
                 </tr>
                 <br>
                 <tr>
                     <th>GIVE DESCRIPTION</th>
-                    <td><input class="form-control" type="text"  placeholder="Description" /></td>
+                    <td><input class="form-control" type="text" name="short_description"  placeholder="Description" /></td>
                 </tr>
                 <br>
                 <tr>
                     <th>GIVE A BOOK TYPE</th>
-                    <td><input class="form-control" type="text"  placeholder="Type" /></td>
+                    <td><input class="form-control" type="text" name="type"  placeholder="Type" /></td>
                 </tr>
                 <br>
                 <tr>
                     <th>GIVE A FIRST NAME</th>
-                    <td><input class="form-control" type="text"  placeholder="First Name" /></td>
+                    <td><input class="form-control" type="text" name="author_first_name"  placeholder="First Name" /></td>
                 </tr>
                 <tr>
                     <th>GIVE A LAST NAME</th>
-                    <td><input class="form-control" type="text"  placeholder="Last Name" /></td>
+                    <td><input class="form-control" type="text" name="author_last_name"  placeholder="Last Name" /></td>
                 </tr>
                 <br>
                 <tr>
                     <th>GIVE PUBLISHER NAME</th>
-                    <td><input class="form-control" type="text"  placeholder="Publisher Name" /></td>
+                    <td><input class="form-control" type="text" name="publisher_name"  placeholder="Publisher Name" /></td>
                 </tr>
                 <br>
                 <tr>
                     <th>GIVE PUBLISHER ADDRESS</th>
-                    <td><input class="form-control" type="text"  placeholder="Publisher address" /></td>
+                    <td><input class="form-control" type="text" name="publisher_address"  placeholder="Publisher address" /></td>
                 </tr>
                 <br>
                 <tr>
                     <th>GIVE PUBLISH DATE</th>
-                    <td><input class="form-control" type="date"  placeholder="Publish date" /></td>
+                    <td><input class="form-control" type="date" name="publish_date" placeholder="Publish date" /></td>
                 </tr>
                 <br>
                 <tr>
                     <th>GIVE STATUS</th>
-                    <td><input class="form-control" type="text"  placeholder="available/reserved" /></td>
+                    <td><input class="form-control" type="text" name="availability"  placeholder="available/reserved" /></td>
                 </tr>
                 <br>
                 <tr>
                     <th>INSERT PHOTO HERE</th>
-                    <td><input class="form-control" type="file" /></td>
+                    <td><input class="form-control" name="photo" type="text"  placeholder="place image url"/></td>
                 </tr>
                 <br>
                 <tr>

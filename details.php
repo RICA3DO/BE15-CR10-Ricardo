@@ -70,7 +70,7 @@ if ($_GET['libraryID']) {
 
 <body>
     <div class="Books w-50 mt-5 bg-dark">
-        <img src="pictures/<?= $photo ?>" class="rounded mx-auto d-block mb-3 " alt="<?= $name ?>" width="200px">
+        <img src="<?= $photo ?>" class="rounded mx-auto d-block mb-3 " alt="<?= $name ?>" width="200px">
         <p class='h2 text-center text-info mt-5 mb-5'> <?= $name ?> </p>
         <table class='table bg-dark text-white'>
             <thead class='table-secondary'>
